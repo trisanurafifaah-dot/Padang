@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Situs Makanan - Kontak</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        header { background-color: #333; color: white; padding: 10px; text-align: center; }
+        nav { background-color: #444; }
+        nav ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; }
+        nav ul li { position: relative; }
+        nav ul li a { color: white; text-decoration: none; padding: 15px; display: block; }
+        nav ul li:hover > ul { display: block; } /* Dropdown CSS */
+        nav ul ul { display: none; position: absolute; top: 100%; left: 0; background-color: #555; min-width: 150px; }
+        nav ul ul li { width: 100%; }
+        nav ul ul li a { padding: 10px; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; }
+        form { display: flex; flex-direction: column; gap: 10px; }
+        input, textarea { padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        button { padding: 10px; background: #333; color: white; border: none; cursor: pointer; }
+        footer { text-align: center; padding: 10px; background: #333; color: white; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hubungi Kami</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="recipes.html">Resep</a>
+                <ul>
+                    <li><a href="recipes.html#dendeng">Dendeng</a></li>
+                    <li><a href="recipes.html#rendang">Rendang</a></li>
+                    <li><a href="recipes.html#ayam-pop">Ayam Pop</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Kontak</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Kirim Pesan</h2>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Nama" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <textarea id="message" placeholder="Pesan" required></textarea>
+            <button type="submit">Kirim</button>
+        </form>
+    </div>
+</body>
+</html>

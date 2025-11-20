@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>Situs Makanan - Resep</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        header { background-color: #333; color: white; padding: 10px; text-align: center; }
+        nav { background-color: #444; }
+        nav ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; }
+        nav ul li { position: relative; }
+        nav ul li a { color: white; text-decoration: none; padding: 15px; display: block; }
+        nav ul li:hover > ul { display: block; } /* Dropdown CSS */
+        nav ul ul { display: none; position: absolute; top: 100%; left: 0; background-color: #555; min-width: 150px; }
+        nav ul ul li { width: 100%; }
+        nav ul ul li a { padding: 10px; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; }
+        .recipe { margin-bottom: 20px; }
+        .recipe h3 { cursor: pointer; color: #333; }
+        .recipe-details { display: none; } /* Hidden by default, shown by JS */
+        footer { text-align: center; padding: 10px; background: #333; color: white; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Resep Makanan</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="recipes.html">Resep</a>
+                <ul>
+                    <li><a href="#dendeng">Dendeng</a></li>
+                    <li><a href="#rendang">Rendang</a></li>
+                    <li><a href="#ayam-pop">Ayam Pop</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Kontak</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="recipe" id="dendeng">
+            <h3 onclick="toggleRecipe('dendeng')">Dendeng</h3>
+            <div class="recipe-details">
+                <p><strong>Bahan:</strong>Bahan dasar
+Daging sapi, diiris tipis dengan ketebalan antara ⅛ hingga ¼ inci. Potongan yang cocok antara lain has dalam, has luar, atau sandung lamur.
+Garam. 
+Bumbu halus untuk dendeng balado
+Bawang putih.
+Bawang merah.
+Ketumbar bubuk.
+Jahe.
+Lengkuas.
+Kemiri. 
+Bumbu rebusan
+Daun salam.
+Daun jeruk.
+Serai, digeprek.
+Gula merah, disisir.
+Air asam jawa. 
+Bahan sambal balado
+Cabai merah keriting dan/atau cabai merah besar.
+Bawang merah.
+Bawang putih.
+Minyak goreng.
+Garam.
+Penyedap rasa, bisa kaldu bubuk. </p>
+        
+            </div>
+        </div>
+        <div class="recipe" id="rendang">
+            <h3 onclick="toggleRecipe('rendang')">Rendang</h3>
+            <div class="recipe-details">
+                <p><strong>Bahan:</strong>1 kg daging sapi.
+1 liter santan kental dari 3 butir kelapa (perasan pertama tanpa air).
+550 gram kelapa parut, disangrai sampai kecokelatan.
+5 lembar daun salam.
+1 lembar daun kunyit.
+10 lembar daun jeruk.
+5 batang serai.
+1/2 batang kayu manis.</p>
+            
+            </div>
+        </div>
+        <div class="recipe" id="ayam-pop">
+            <h3 onclick="toggleRecipe('ayam-pop')">Ayam Pop</h3>
+            <div class="recipe-details">
+                <p><strong>Bahan:</strong> 2 ekor ayam pejantan, potong 4 bagian 6 siung bawang putih 3 lembar daun salam 6 lembar daun jeruk 2 batang serai, geprek 4 cm jahe, iris Bahan lainnya: 1 sdm garam ½ sdm kaldu jamur/penyedap 1/6 sdt merica 100 ml santan 600 ml air kelapa.</p>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleRecipe(id) {
+            const details = document.querySelector(`#${id} .recipe-details`);
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toko Bucket Bunga Cantik</title>
+  <style>
+    /* ====== WARNA DAN GAYA DASAR ====== */
+    :root {
+      --primary: #d81b60;
+      --dark: #880e4f;
+      --light-bg: #fff4f8;
+      --dark-bg: #2b2b2b;
+      --light-text: #333;
+      --dark-text: #f8f8f8;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--light-text);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: var(--dark);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 14px 20px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    nav a:hover {
+      background-color: var(--primary);
+      transform: scale(1.05);
+    }
+
+    section {
+      display: none;
+      padding: 25px;
+      max-width: 1000px;
+      margin: auto;
+      animation: fadeIn 0.5s;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    h2 {
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    /* ====== KARTU PRODUK ====== */
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .product-card img {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      margin: 0;
+      color: var(--primary);
+    }
+
+    /* ====== INPUT PENCARIAN ====== */
+    #searchBox {
+      padding: 10px;
+      border: 2px solid var(--primary);
+      border-radius: 5px;
+      width: 100%;
+      max-width: 400px;
+      margin: 10px 0 20px;
+    }
+
+    /* ====== FORM KONTAK ====== */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+      max-width: 500px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border: 2px solid var(--primary);
+      border-radius: 5px;
+      font-size: 1em;
+      resize: vertical;
+    }
+
+    button {
+      background-color: var(--primary);
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--dark);
+      transform: scale(1.05);
+    }
+
+    .success {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    /* ====== DARK MODE ====== */
+    .dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    .dark-mode header {
+      background-color: #444;
+    }
+
+    .dark-mode nav {
+      background-color: #111;
+    }
+
+    .dark-mode .product-card {
+      background-color: #3a3a3a;
+      color: #fff;
+    }
+
+    .dark-mode input, 
+    .dark-mode textarea {
+      background-color: #555;
+      color: white;
+      border-color: #777;
+    }
+
+    /* ====== FOOTER DAN TOMBOL ====== */
+    footer {
+      text-align: center;
+      background-color: var(--primary);
+      color: white;
+      padding: 10px;
+      margin-top: 30px;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .toggle-btn:hover {
+      transform: rotate(20deg);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 600px) {
+      .product-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .product-card img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Toko Bucket Bunga Cantik</h1>
+    <p>Hadiah terbaik untuk orang tersayang 💐</p>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showPage('beranda')">Beranda</a>
+    <a href="#" onclick="showPage('produk')">Produk</a>
+    <a href="#" onclick="showPage('kontak')">Kontak</a>
+  </nav>
+
+  <!-- ====== Halaman Beranda ====== -->
+  <section id="beranda" class="active">
+    <h2>Selamat Datang!</h2>
+    <p>
+      Bucket bunga merupakan cara indah untuk mengungkapkan kasih sayang, ucapan selamat,
+      atau sekadar membawa senyum untuk seseorang. Kami menyediakan bucket bunga berkualitas
+      dengan desain elegan dan harga bersahabat.
+    </p>
+    <img src="https://images.unsplash.com/photo-1563306406-b3b1caee93b3"
+         alt="Bucket Bunga Cantik" style="width:100%;max-width:500px;border-radius:10px;">
+  </section>
+
+  <!-- ====== Halaman Produk ====== -->
+  <section id="produk">
+    <h2>Daftar Bucket Bunga</h2>
+    <input type="text" id="searchBox" placeholder="Cari bucket bunga...">
+
+    <div id="productList">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1598965675041-3b41c9f7fbe0" alt="Bucket Mawar">
+        <div>
+          <h3>Bucket Mawar</h3>
+          <p>Perpaduan mawar merah dan putih melambangkan cinta dan kemurnian. Cocok untuk hari valentine.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1528834352600-1184d9e48a07" alt="Bucket Tulip">
+        <div>
+          <h3>Bucket Tulip</h3>
+          <p>Tulip cerah beraroma lembut, memberikan kesan segar dan elegan untuk momen spesial.</p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1598965675055-2187d77e8693" alt="Bucket Matahari">
+        <div>
+          <h3>Bucket Bunga Matahari</h3>
+          <p>Simbol kebahagiaan dan energi positif. Pilihan sempurna untuk hadiah ulang tahun.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Halaman Kontak ====== -->
+  <section id="kontak">
+    <h2>Hubungi Kami</h2>
+    <p>Silakan isi formulir di bawah ini untuk menghubungi kami. Kami akan membalas secepatnya 🌷</p>
+
+    <form id="contactForm">
+      <input type="text" id="nama" placeholder="Nama Anda" required>
+      <input type="email" id="email" placeholder="Email Anda" required>
+      <textarea id="pesan" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+      <button type="submit">Kirim Pesan</button>
+      <p id="statusMsg" class="success"></p>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Toko Bucket Bunga Cantik | All Rights Reserved
+  </footer>
+
+  <button class="toggle-btn" onclick="toggleDarkMode()">🌓</button>
+
+  <script>
+    // ====== Navigasi antar halaman ======
+    function showPage(pageId) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ====== Pencarian Produk ======
+    const searchBox = document.getElementById('searchBox');
+    searchBox?.addEventListener('input', function() {
+      const keyword = this.value.toLowerCase();
+      const products = document.querySelectorAll('.product-card');
+      products.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(keyword) ? 'flex' : 'none';
+      });
+    });
+
+    // ====== Dark Mode ======
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const btn = document.querySelector('.toggle-btn');
+      btn.textContent = document.body.classList.contains('dark-mode') ? '🌞' : '🌓';
+    }
+
+    // ====== Form Kontak ======
+    const contactForm = document.getElementById('contactForm');
+    const statusMsg = document.getElementById('statusMsg');
+
+    contactForm?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      statusMsg.textContent = "Pesan Anda telah terkirim! 🌸";
+      contactForm.reset();
+      setTimeout(() => statusMsg.textContent = "", 4000);
+    });
+  </script>
+</body>
+</html>

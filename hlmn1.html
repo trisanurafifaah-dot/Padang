@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeliciousBite - Beranda</title>
+  <style>
+    body { margin: 0; font-family: 'Poppins', sans-serif; background-color: #fff8f0; }
+    .navbar {
+      background-color: #d35400;
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 15px 30px;
+    }
+    .logo { color: white; font-weight: bold; font-size: 24px; letter-spacing: 1px; }
+    .nav-links { list-style: none; display: flex; margin: 0; padding: 0; }
+    .nav-links li { position: relative; }
+    .nav-links a {
+      color: white; padding: 12px 18px;
+      text-decoration: none; display: block; transition: background 0.3s;
+    }
+    .nav-links a:hover { background-color: #e67e22; }
+    .dropdown-content {
+      display: none; position: absolute;
+      background-color: #e67e22;
+      min-width: 160px; top: 48px; left: 0;
+      z-index: 1; border-radius: 4px;
+    }
+    .dropdown-content a { padding: 10px 15px; color: white; }
+    .dropdown-content a:hover { background-color: #f39c12; }
+    .dropdown.show .dropdown-content { display: block; }
+
+    header {
+      background: url('https://images.unsplash.com/photo-1606756790118-f9b86c1a8e6b?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color: white; text-align: center;
+      padding: 120px 20px;
+    }
+    header h1 { font-size: 50px; margin: 0; text-shadow: 2px 2px 4px #000; }
+    header p { font-size: 20px; }
+
+    .content {
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .menu-preview {
+      display: flex; justify-content: center;
+      gap: 20px; flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .menu-item {
+      background: white; padding: 15px;
+      border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 250px; text-align: center;
+    }
+
+    .menu-item img {
+      width: 100%; border-radius: 8px;
+      height: 160px; object-fit: cover;
+    }
+
+    footer {
+      text-align: center; background-color: #d35400; color: white;
+      padding: 15px; margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">🍴 DeliciousBite</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Menu ▼</a>
+        <div class="dropdown-content">
+          <a href="about.html">Tentang Kami</a>
+          <a href="contact.html">Kontak</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Selamat Datang di DeliciousBite</h1>
+    <p>Rasakan kelezatan setiap gigitan!</p>
+  </header>
+
+  <section class="content">
+    <h2>Menu Favorit Kami</h2>
+    <div class="menu-preview">
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1606755962773-0a36f92cfc49?auto=format&fit=crop&w=500&q=80" alt="Pizza">
+        <h3>Pizza Mozarella</h3>
+        <p>Lelehan keju dan saus tomat khas Italia.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=500&q=80" alt="Burger">
+        <h3>Burger Spesial</h3>
+        <p>Daging juicy dengan saus rahasia kami.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=500&q=80" alt="Dessert">
+        <h3>Dessert Cokelat</h3>
+        <p>Manisnya surga dalam satu gigitan.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 DeliciousBite | Nikmati Cita Rasa Terbaik
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const dropdowns = document.querySelectorAll(".dropdown");
+
+      dropdowns.forEach(drop => {
+        drop.addEventListener("click", function() {
+          dropdowns.forEach(d => { if (d !== drop) d.classList.remove("show"); });
+          drop.classList.toggle("show");
+        });
+      });
+
+      window.addEventListener("click", function(e) {
+        if (!e.target.matches(".dropbtn")) dropdowns.forEach(d => d.classList.remove("show"));
+      });
+    });
+  </script>
+</body>
+</html>
